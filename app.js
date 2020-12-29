@@ -141,6 +141,18 @@ app.post('/update/:id', (req, res) => {
     
 })
 
+app.get('/delete/:id', (req, res) => {
+    const id = req.params.id;
+
+    Vocabulary.deleteOne({_id: id}, (err) => {
+        if(err){
+            console.log(err);
+        }
+    })
+
+    res.redirect('/'); 
+})
+
 app.listen(3000, () => {
     console.log("App starting at port 3000");
 })
