@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const random = require('mongoose-random');
 // const ejs = require('ejs');
 const app = express();
 app.use(express.static('public'));
@@ -8,6 +9,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.urlencoded({ extended: false }))
 // connect db
 mongoose.connect('mongodb://localhost:27017/djv', {useNewUrlParser: true, useUnifiedTopology: true});
+
+
+
 
 const categorySchema = new mongoose.Schema({
     category: {
@@ -58,6 +62,28 @@ app.get('/', (req, res) => {
         }
     });
 })
+
+app.get('/random', (req, res) => {
+    // Get the count of all users
+    Vocabulary.count().exec(function (err, count) {
+
+    // Get a random entry
+    const random = Math.floor(Math.random() * count)
+
+    // Again query all users but only fetch one offset by our random #
+    Vocabulary.findOne().skip(random).exec(function (err, result) {
+        // Tada! random vocabulary
+        // console.log(result); 
+        // res.render('random.ejs', {items: results});
+        if(err){
+            console.log(err)
+        }else{
+            res.render('random.ejs', {items: result});
+        }
+    })
+})
+
+});
 
 app.get('/new', (req, res) => {
     res.render('new.ejs');
