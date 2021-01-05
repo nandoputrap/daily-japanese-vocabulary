@@ -8,47 +8,58 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <h1>Hello world</h1>
-    <a href="/new">Add new</a>
-
-    <div class="container">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Hiragana/Katakana</th>
-                    <th>Romaji</th>
-                    <th>Meaning</th>
-                    <th>Category</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% let i = 1 %>
-                <% items.forEach((item) => { %>
-                <tr>
-                    <td><%= i++ %> </td>
-                    <td><%= item.japanWord %></td>
-                    <td><%= item.word %></td>
-                    <td><%= item.meaning %></td>
-                    <td><%= item.category.category %> </td>
-                    <td><button class="btn btn-warning"><a href="/edit/<%= item._id %>">Edit</a></button>
-                        <button class="btn btn-danger"><a href="/delete/<%= item._id %>">Delete</a></button></td>
-                </tr>
-                <% }) %>
-            </tbody>
-        </table>
+    <div class="wrapper">
+        <div class="container-fluid content">
+            <div class="row title-row text-center">
+                <h1 class="title font-weight-bold">Daily Japanese Vocabulary</h1>
+            </div>
+            <div class="row menu-row d-flex">
+                <div class="service col-md-3 d-flex flex-column justify-content-center align-items-center">
+                    <a href="/vocabulary">
+                        <div class="menu d-flex align-items-center justify-content-center">
+                            <i class="fas fa-list"></i>
+                        </div>
+                    </a>
+                    <p class="mt-5">Vocabulary List</p>
+                </div>
+                <div class="service col-md-3 d-flex flex-column justify-content-center align-items-center">
+                    <a href="/random-word">
+                        <div class="menu d-flex align-items-center justify-content-center">
+                            <i class="fas fa-random"></i>
+                        </div>
+                    </a>
+                    <p class="mt-5">Random Word</p>
+                </div>
+                <div class="service col-md-3 d-flex flex-column justify-content-center align-items-center">
+                    <a href="/quiz">
+                        <div class="menu d-flex align-items-center justify-content-center">
+                            <i class="fas fa-question"></i>
+                        </div>
+                    </a>
+                    <p class="mt-5">Quiz</p>
+                </div>
+                <div class="service col-md-3 d-flex flex-column justify-content-center align-items-center">
+                    <a href="/about">
+                        <div class="menu d-flex align-items-center justify-content-center">
+                            <i class="fas fa-info"></i>
+                        </div>
+                    </a>
+                    <p class="mt-5">About</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <div class="container-fluid text-center">
+        <div class="container-fluid text-center footer">
             <p>Made with ❤️ by Nando Putra Pratama</p>
         </div>
     </footer>

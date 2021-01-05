@@ -11,8 +11,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 mongoose.connect('mongodb://localhost:27017/djv', {useNewUrlParser: true, useUnifiedTopology: true});
 
 
-
-
 const categorySchema = new mongoose.Schema({
     category: {
         type: String,
@@ -51,14 +49,16 @@ const verb = new Category({
     category: "verb"
 })
 
-
-
 app.get('/', (req, res) => {
+    res.render('index.ejs');
+})
+
+app.get('/vocabulary', (req, res) => {
     Vocabulary.find( (err, vocabularies) => {
         if(err){
             console.log(err)
         }else{
-            res.render('index.ejs', {items: vocabularies});
+            res.render('vocabulary.ejs', {items: vocabularies});
         }
     });
 })
@@ -113,7 +113,7 @@ app.post('/create', (req, res) => {
 
     vocabulary.save();
 
-    res.redirect('/');
+    res.redirect('/vocabulary');
 })
 
 app.get('/edit/:id', (req, res) => {
@@ -163,7 +163,7 @@ app.post('/update/:id', (req, res) => {
         }
     })
 
-    res.redirect('/');
+    res.redirect('/vocabulary');
     
 })
 
@@ -176,7 +176,7 @@ app.get('/delete/:id', (req, res) => {
         }
     })
 
-    res.redirect('/'); 
+    res.redirect('/vocabulary'); 
 })
 
 app.listen(3000, () => {
