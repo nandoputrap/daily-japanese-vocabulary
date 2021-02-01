@@ -84,3 +84,41 @@ a:link {
 .table-striped>tbody>tr:nth-child(2n+1)>th {
     background-color: rgba(49, 29, 63, 0.1);
 }
+
+
+/* random word */
+.box{
+    background-color: #ededed;
+    /* border: 5px solid #E23E57; */
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+}
+
+.box-title{
+    background-color: none;
+}
+
+.box-answer {
+    background-color: #E23E57;
+    border-radius: 5px;
+    min-width: 200px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    opacity: 0;
+    transition: .5s;
+    color: white;
+    transform: scale(0.1, 0.1);
+}
+
+.show{
+    opacity: 1;
+    transform: scale(1, 1);
+}
+/* random word */

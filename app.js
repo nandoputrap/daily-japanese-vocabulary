@@ -8,6 +8,8 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(__dirname + '/public'));
+
 // connect db
 mongoose.connect('mongodb://localhost:27017/djv', {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -64,7 +66,7 @@ app.get('/vocabulary', (req, res) => {
     });
 })
 
-app.get('/random', (req, res) => {
+app.get('/random-word', (req, res) => {
     // Get the count of all users
     Vocabulary.count().exec(function (err, count) {
 
@@ -112,6 +114,7 @@ app.post('/create', (req, res) => {
         category: input_category
     })
 
+    Swal.fire('Success');
     vocabulary.save();
 
     res.redirect('/vocabulary');
