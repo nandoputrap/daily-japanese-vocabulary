@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const random = require('mongoose-random');
+const Swal = require('sweetalert2')
+// const random = require('mongoose-random');
 // const ejs = require('ejs');
 const app = express();
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 // connect db
 mongoose.connect('mongodb://localhost:27017/djv', {useNewUrlParser: true, useUnifiedTopology: true});
 

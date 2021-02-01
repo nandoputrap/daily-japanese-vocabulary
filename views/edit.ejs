@@ -1,46 +1,37 @@
-<!-- Begin edit Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit vocabulary</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/update/<%=items._id%>" method="POST">
-                    <div class="form-group">
-                        <label for="japanWord">Hiragana / Katakana</label>
-                        <input type="text" class="form-control" id="japanWord" name="japanWord"
-                            placeholder="Input hiragana / katakana..." value="<%= items.japanWord %>">
-                        <label for="word">Romaji</label>
-                        <input type="text" class="form-control" id="word" name="word" placeholder="Input romaji..."
-                            value="<%= items.word %>">
-                        <label for="meaning">Meaning</label>
-                        <input type="text" class="form-control" id="meaning" name="meaning"
-                            placeholder="Input meaning..." value="<%= items.meaning %>">
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <select class="form-control" id="category" name="category">
-                            <option value="noun" <% if(items.category.category === "noun"){ %> selected <% } %>>Noun
-                            </option>
-                            <option value="adjective" <% if(items.category.category === "adjective"){ %> selected
-                                <% } %>>
-                                Adjective
-                            </option>
-                            <option value="verb" <% if(items.category.category === "verb"){ %> selected <% } %>>Verb
-                            </option>
-                        </select>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-danger">Update</button>
-                </form>
-            </div>
+<%- include('header') %>
+
+<div class="container mt-5">
+    <h1>Add new word</h1>
+
+    <form action="/update/<%=items._id%>" method="POST">
+        <div class="form-group">
+            <label for="japanWord">Hiragana / Katakana</label>
+            <input type="text" class="form-control" id="japanWord" name="japanWord"
+                placeholder="Input hiragana / katakana..." value="<%= items.japanWord %>">
+            <label for="word">Romaji</label>
+            <input type="text" class="form-control" id="word" name="word" placeholder="Input romaji..."
+                value="<%= items.word %>">
+            <label for="meaning">Meaning</label>
+            <input type="text" class="form-control" id="meaning" name="meaning" placeholder="Input meaning..."
+                value="<%= items.meaning %>">
         </div>
-    </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category" name="category">
+                <option value="noun" <% if(items.category.category === "noun"){ %> selected <% } %>>Noun
+                </option>
+                <option value="adjective" <% if(items.category.category === "adjective"){ %> selected <% } %>>
+                    Adjective
+                </option>
+                <option value="verb" <% if(items.category.category === "verb"){ %> selected <% } %>>Verb
+                </option>
+            </select>
+        </div>
+
+        <a href="/vocabulary" class="btn btn-secondary">Cancel</a>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+        <button type="submit" class="btn btn-danger">Update</button>
+    </form>
 </div>
-<!-- End edit modal -->
+
+<%- include('footer') %>

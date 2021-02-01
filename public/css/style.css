@@ -10,6 +10,10 @@ a:link {
     text-decoration: none !important;
 }
 
+.content{
+    min-height: 100vh;
+}
+
 .footer{
     padding: 10px !important;
     background-color: #311D3F;
