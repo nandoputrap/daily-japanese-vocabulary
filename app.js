@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Swal = require('sweetalert2')
+const random = require('mongoose-simple-random');
 // const random = require('mongoose-random');
 // const ejs = require('ejs');
 const app = express();
@@ -182,6 +183,22 @@ app.get('/delete/:id', (req, res) => {
 
     res.redirect('/vocabulary'); 
 })
+
+app.get('/about', (req, res) => {
+    res.render('about.ejs');
+})
+
+app.get('/quiz', (req, res) => {
+    // random some word
+    Vocabulary.aggregate([{ $sample: { size: 4 } }], function(err, result){
+        if(err){
+            console.log(err)
+        }else{
+            res.render('quiz.ejs', {items: result});
+        }
+    });
+
+});    
 
 app.listen(3000, () => {
     console.log("App starting at port 3000");

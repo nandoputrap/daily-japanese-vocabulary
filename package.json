@@ -17,6 +17,7 @@
     "jquery": "^3.5.1",
     "mongoose": "^5.11.8",
     "mongoose-random": "^0.1.1",
+    "mongoose-simple-random": "^0.4.1",
     "sweetalert2": "^10.14.0"
   }
 }
