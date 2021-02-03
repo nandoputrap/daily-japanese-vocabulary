@@ -188,17 +188,68 @@ app.get('/about', (req, res) => {
     res.render('about.ejs');
 })
 
-app.get('/quiz', (req, res) => {
-    // random some word
-    Vocabulary.aggregate([{ $sample: { size: 4 } }], function(err, result){
-        if(err){
-            console.log(err)
-        }else{
-            res.render('quiz.ejs', {items: result});
-        }
-    });
+app.get('/haha', (req, res) => {
+    let kotak = [];
+    let ini = "";
+    for(let i = 0; i<2;i++){
+        // random some word
+        Vocabulary.aggregate([{ $sample: { size: 4 } }], function(err, result){
+            if(err){
+                console.log(err)
+            }else{
+                // res.render('quiz.ejs', {items: result});
+                return ini = "result";
+            }
+        });
+        kotak.push(ini);
+    }
+    console.log(kotak);
 
-});    
+});
+
+// app.get('/quiz', (req, res) => {
+//     let boxes = [];
+//     Vocabulary.aggregate([{ $sample: { size: 4 } }], function(err, result){
+//         for(let i = 0;i<10;i++){
+//             let x = '';
+//             if(err){
+//                 console.log(err)
+//             }else{
+//                 x = result;
+//             }
+//             boxes.push(x);
+//         }
+//         res.render('quiz.ejs', {items: boxes});
+//         console.log(boxes);
+//     });
+// })
+
+
+function generateQuiz(){
+    
+}
+
+app.get('/quiz', (req, res) => {
+    var boxes = [];
+    
+        // for(let i=0;i<2;i++){
+            Vocabulary.aggregate([{ $sample: { size: 4 } }], function(err, result){
+                res.render('quiz.ejs', {items: result});
+            });
+            // box = Vocabulary.aggregate([{ $sample: { size: 4 } }]);
+            // boxes.push(box);
+        // }
+        // console.log(boxes);
+        
+    // console.log(box);
+        // console.log(box);
+    // console.log(boxes);
+    // res.render('quiz.ejs', {items: boxes});
+})
+
+app.get('/coba', (req, res) => {
+    res.render('coba.ejs', {items: kotak});
+})
 
 app.listen(3000, () => {
     console.log("App starting at port 3000");

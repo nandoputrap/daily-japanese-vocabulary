@@ -1,19 +1,38 @@
 <%- include('header') %>
 
-
 <div class="container mt-5">
     <div class="row justify-content-center">
         <h1><strong>Quiz</strong></h1>
     </div>
-    <div class="row">
-        <h1><%= items[0].japanWord %> </h1>
-    </div>
-    <div class="row">
-        <% items.forEach(item => { %>
-        <div class="box">
-            <%= item.word %>
+    <div class="row justify-content-center mt-5 mb-2">
+        <div class="box-title">
+            <% 
+                const soal = Math.floor(Math.random() * 4);
+                
+            %>
+            <h1><%= items[soal].japanWord %> ?</h1>
         </div>
-        <% }) %>
+    </div>
+    <div class="row justify-content-around mt-2">
+        <div>
+            <% let i = 0 %>
+            <% let pilgan = ['a. ', 'b. ', 'c. ', 'd. '] %>
+            <% items.forEach(item => { %>
+            <div class="pg mt-3 <% if(items[soal]._id === item._id){ %> correct <% } %>">
+                <%= pilgan[i] %> <%= item.word %> | <%= item.meaning %> | <%= item.category.category %>
+            </div>
+            <% i++ %>
+            <% }) %>
+        </div>
+
+        <!-- <div class="box-answer">Meaning?</div>
+            <div class="box-answer">Type?</div> -->
+    </div>
+    <!-- <div class="row justify-content-center mt-5">
+        <a href="/quiz" class="btn btn-danger">Check</a>
+    </div> -->
+    <div class="row justify-content-center mt-5">
+        <a href="/quiz" class="btn btn-secondary">Reload</a>
     </div>
 </div>
 

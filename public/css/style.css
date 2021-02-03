@@ -122,3 +122,24 @@ a:link {
     transform: scale(1, 1);
 }
 /* random word */
+
+/* quiz */
+.pg{
+    background-color: #eee;
+    padding: 15px 10px;
+    border-radius: 5px;
+    min-width: 100px;
+}
+
+.pg:hover{
+    cursor: pointer;
+}
+
+.pg-clicked{
+    border: 1px solid red !important;
+}
+
+.pg-clicked-true {
+    background-color: chartreuse;
+}
+/* quiz */
