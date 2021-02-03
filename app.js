@@ -12,7 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 
 // connect db
-mongoose.connect('mongodb://localhost:27017/djv', {useNewUrlParser: true, useUnifiedTopology: true});
+// local db
+// mongoose.connect('mongodb://localhost:27017/djv', {useNewUrlParser: true, useUnifiedTopology: true});
+// cloud atlas db
+mongoose.connect('mongodb+srv://nando:nandonando@cluster0.hi96w.mongodb.net/djv', {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 const categorySchema = new mongoose.Schema({
