@@ -254,6 +254,11 @@ app.get('/coba', (req, res) => {
     res.render('coba.ejs', {items: kotak});
 })
 
-app.listen(3000, () => {
+let port = process.env.PORT;
+if(port == nul || port == ''){
+    port = 3000;
+}
+
+app.listen(port, () => {
     console.log("App starting at port 3000");
 })
